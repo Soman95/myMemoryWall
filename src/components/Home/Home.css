@@ -11,28 +11,23 @@
 }
 
 .rightSide {
-  /* background-color: aqua; */
   margin: auto;
 }
 
 .logo img {
   height: 50%;
-  /* background-color: green; */
   margin-left: 100px;
-  margin-top: 70px;
+  margin-top: 100px;
 }
 
 .logo {
-  /* background-color: blue; */
+  height: 500px;
   margin-top: 50px;
   width: 50%;
 }
 
 .companyName {
-  /* background-color: yellow; */
   height: 150px;
-  /* margin: 40px; */
-  /* margin-right: 100px; */
   margin: auto;
 }
 

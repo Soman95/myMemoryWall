@@ -1,12 +1,12 @@
 import { useSpring, animated, config } from 'react-spring';
-import logo from '../../assets/heartbeat.png';
+import logo from '../../assets/heartlogo.png';
 import stackPhotos from '../../assets/defaultPics.jpeg';
 import './Home.css';
 
 const Home = () => {
   const leftStyles = useSpring({
     from: { x: -200 },
-    to: { x: 50 },
+    to: { x: 0 },
     config: config.molasses,
   });
 
@@ -34,7 +34,7 @@ const Home = () => {
               <h1>
                 MuslimMemory<span>wall</span>
               </h1>
-              <p> although they are gone, their memory lives on.</p>
+              <p> although they're gone, memories live on.</p>
             </div>
             <div className='buttons'>
               <button>Search for a loved one</button>
