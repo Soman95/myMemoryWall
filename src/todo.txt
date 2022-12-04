@@ -1,0 +1,12 @@
+Frontend:
+- send a confirmation email when someone has made a page
+- Create the profile page for the deceased
+    * need to fix the 'Add to database btn and find working solution'
+- has a specific route for each profile when created. 
+    * maybe for this we could add a key to walldatactx and use that in the route?
+- when making a page link it to create Launchgood or Gofundme automatically
+
+Backend:
+- Create a database for all deceased profiles.
+- database must be able to update 
+- create commands to search through the database

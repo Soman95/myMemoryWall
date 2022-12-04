@@ -11,41 +11,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { useState, useContext } from 'react';
 import { WallDataCtx } from '../../Context/WallDataContext';
+import { Link } from 'react-router-dom';
 
-import { createTheme, ThemeProvider } from '@mui/material';
 import './Form.css';
-
-// const theme = createTheme({
-//   overrides: {
-//     MuiOutlinedInput: {
-//       notchedOutline: {
-//         borderColor: '#72bb88',
-//       },
-//     },
-//   },
-// });
-
-const defaultColor = '#72bb88';
-const hoverColor = '#72bb88';
-const focusColor = '#72bb88';
-
-const theme = createTheme({
-  overrides: {
-    MuiOutlinedInput: {
-      root: {
-        '&:hover $notchedOutline': {
-          borderColor: `${hoverColor} !important`,
-        },
-        '&$focused $notchedOutline': {
-          borderColor: focusColor,
-        },
-      },
-      notchedOutline: {
-        borderColor: `${hoverColor} !important`,
-      },
-    },
-  },
-});
 
 const Form = () => {
   const [birthValue, setBirthValue] = useState(dayjs('2001-10-18T21:11:54'));
@@ -71,108 +39,106 @@ const Form = () => {
       birthDate: birthValue['$d'],
       deathDate: deathValue['$d'],
       email: data.get('email'),
+      key: 'adam',
     });
   };
-
   return (
-    <ThemeProvider theme={theme}>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Container component='main' maxWidth='xs'>
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 20,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Typography component='h1' variant='h5'>
-              Enter Details
-            </Typography>
-            <Box
-              component='form'
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 3 }}
-            >
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <TextField
-                    autoComplete='given-name'
-                    name='firstName'
-                    required
-                    fullWidth
-                    id='firstName'
-                    label='Your Name'
-                    autoFocus
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    required
-                    fullWidth
-                    id='deceasedFirstName'
-                    label='Their First Name'
-                    name='deceasedFirstName'
-                    autoComplete='family-name'
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    required
-                    fullWidth
-                    id='DeceasedLastName'
-                    label='Their Last Name'
-                    name='deceasedLastName'
-                    autoComplete='family-name'
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <DesktopDatePicker
-                    label='Birth Date'
-                    inputFormat='DD/MM/YYYY'
-                    value={birthValue}
-                    name='birthDate'
-                    onChange={handleBirthChange}
-                    renderInput={params => <TextField {...params} />}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <DesktopDatePicker
-                    label='Death Date'
-                    inputFormat='DD/MM/YYYY'
-                    value={deathValue}
-                    name='deathDate'
-                    onChange={handleDeathChange}
-                    renderInput={params => <TextField {...params} />}
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    id='email'
-                    label='Email Address'
-                    name='email'
-                    autoComplete='email'
-                  />
-                </Grid>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Container component='main' maxWidth='xs'>
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 20,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Typography component='h1' variant='h5'>
+            Enter Details
+          </Typography>
+          <Box component='form' onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete='given-name'
+                  name='firstName'
+                  required
+                  fullWidth
+                  id='firstName'
+                  label='Your Name'
+                  autoFocus
+                />
               </Grid>
-              <Button
-                type='submit'
-                fullWidth
-                variant='contained'
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Create Wall
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id='deceasedFirstName'
+                  label='Their First Name'
+                  name='deceasedFirstName'
+                  autoComplete='family-name'
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id='DeceasedLastName'
+                  label='Their Last Name'
+                  name='deceasedLastName'
+                  autoComplete='family-name'
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <DesktopDatePicker
+                  label='Birth Date'
+                  inputFormat='DD/MM/YYYY'
+                  value={birthValue}
+                  name='birthDate'
+                  onChange={handleBirthChange}
+                  renderInput={params => <TextField {...params} />}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <DesktopDatePicker
+                  label='Death Date'
+                  inputFormat='DD/MM/YYYY'
+                  value={deathValue}
+                  name='deathDate'
+                  onChange={handleDeathChange}
+                  renderInput={params => <TextField {...params} />}
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id='email'
+                  label='Email Address'
+                  name='email'
+                  autoComplete='email'
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type='submit'
+              fullWidth
+              variant='contained'
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Add to Database
+            </Button>
+            <Link to='/profile'>
+              <Button fullWidth variant='contained' sx={{ mb: 2 }}>
+                <p className='navBtn'>Create Wall</p>
               </Button>
-            </Box>
+            </Link>
           </Box>
-        </Container>
-      </LocalizationProvider>
-    </ThemeProvider>
+        </Box>
+      </Container>
+    </LocalizationProvider>
   );
 };
 

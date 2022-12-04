@@ -20,9 +20,11 @@ const CreateWall = () => {
         <animated.div style={{ ...upStyles }}>
           <AppBar position='static' sx={{ backgroundColor: '#72bb88' }}>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <div className='appLogo'>
-                <img src={logo} alt='' />
-              </div>
+              <Link to='/'>
+                <div className='appLogo'>
+                  <img src={logo} alt='' />
+                </div>
+              </Link>
               <Link to='/'>
                 <HomeIcon
                   sx={{ fontSize: 50, marginRight: 10, color: 'white' }}
