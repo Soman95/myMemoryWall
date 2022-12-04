@@ -10,3 +10,5 @@ Backend:
 - Create a database for all deceased profiles.
 - database must be able to update 
 - create commands to search through the database
+- Save the cloudinary 'public_id' into the database to be able to fetch it and display per profile.
+    * https://www.youtube.com/watch?v=V8w7K1HdrFo&t=2s
