@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useSpring, animated, config } from 'react-spring';
 import logo from '../../assets/heartlogo.png';
 import stackPhotos from '../../assets/defaultPics.jpeg';
@@ -38,7 +39,9 @@ const Home = () => {
             </div>
             <div className='buttons'>
               <button>Search for a loved one</button>
-              <button>Create a wall</button>
+              <Link to='/create'>
+                <button>Create a wall</button>
+              </Link>
             </div>
           </animated.div>
         </div>

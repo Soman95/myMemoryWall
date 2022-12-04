@@ -1,17 +1,41 @@
-import './CreateWall.css';
+import Form from '../Form/Form';
 import { AppBar, Box, Toolbar } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import { Link } from 'react-router-dom';
+import { useSpring, animated, config } from 'react-spring';
+
 import logo from '../../assets/memoryLogo.png';
+import './CreateWall.css';
+
 const CreateWall = () => {
+  const upStyles = useSpring({
+    from: { y: -30 },
+    to: { y: 0 },
+    config: config.molasses,
+  });
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='static' sx={{ backgroundColor: '#72bb88' }}>
-        <Toolbar>
-          <div className='appLogo'>
-            <img src={logo} alt='' />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <animated.div style={{ ...upStyles }}>
+          <AppBar position='static' sx={{ backgroundColor: '#72bb88' }}>
+            <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div className='appLogo'>
+                <img src={logo} alt='' />
+              </div>
+              <Link to='/'>
+                <HomeIcon
+                  sx={{ fontSize: 50, marginRight: 10, color: 'white' }}
+                />
+              </Link>
+            </Toolbar>
+          </AppBar>
+        </animated.div>
+      </Box>
+      <div className='formContainer'>
+        <Form />
+      </div>
+    </>
   );
 };
 
