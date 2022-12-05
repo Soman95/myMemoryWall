@@ -9,7 +9,6 @@ import './App.css';
 
 const App = () => {
   const [wallDataCtx, setWallDataCtx] = useState({});
-  console.log(wallDataCtx);
   return (
     <>
       <WallDataCtx.Provider value={{ wallDataCtx, setWallDataCtx }}>

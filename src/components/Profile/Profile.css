@@ -1,22 +1,59 @@
-.dropzone {
-  height: 8rem;
-  margin: 1rem;
-  padding: 1rem;
-  border: 2px dashed salmon;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  font-weight: bold;
+.profileHeader {
+  height: 30vh;
+  width: 100vw;
+  background-color: #169f95;
+  color: white;
+}
+
+.profileHeader img {
+  height: 20%;
+  margin-top: 2%;
+  margin-left: 32%;
+  width: 30%;
+}
+
+.imgBackground {
+  background-color: white;
+  height: 300px;
+  width: 350px;
+  border-radius: 50% 50% 0% 0%;
+}
+
+.deceasedImg:hover {
   cursor: pointer;
 }
 
-.active {
-  border: 2px solid rebeccapurple;
+.deceasedContainer {
+  display: flex;
+  /* background-color: red; */
+  width: 300px;
+  height: 500px;
+  flex-direction: column;
+  position: relative;
+  top: -250px;
+  left: 40%;
+  color: #169f95;
 }
 
-.color {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
+.deceasedImg {
+  margin-bottom: 20px;
+  height: 320px;
+  border-radius: 50% 50% 0% 0%;
+  margin-left: 25px;
+  margin-top: 20px;
 }
+
+.deceasedInfo {
+  text-align: center;
+}
+
+.deceasedInfo img {
+  width: 300px;
+  position: relative;
+  bottom: 100px;
+}
+
+/* .bubbleContainer h1 {
+  font-size: 1000px;
+  color: navy;
+} */

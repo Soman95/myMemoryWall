@@ -40,6 +40,9 @@ const Form = () => {
       deathDate: deathValue['$d'],
       email: data.get('email'),
       key: 'adam',
+      memoryName: [''],
+      deceasedRelation: [''],
+      deceasedMsg: [''],
     });
   };
   return (

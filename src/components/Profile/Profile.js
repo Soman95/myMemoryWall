@@ -1,10 +1,13 @@
-import { useContext, useCallback } from 'react';
+import { useState, useContext, useCallback, useEffect } from 'react';
 import { WallDataCtx } from '../../Context/WallDataContext';
 import { useDropzone } from 'react-dropzone';
 import { Image } from 'cloudinary-react';
-import './Profile.css';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/memoryLogo.png';
+import dua from '../../assets/inna.png';
+import MemoryModal from '../MemoryModal/MemoryModal';
 
+import './Profile.css';
 // NEED TO PUT THIS IN ENVIRONMENTAL VARIABLE:
 
 const cloudName = 'dzj3kgb5q';
@@ -14,8 +17,9 @@ const uploadPreset = 'musmemwall';
 
 const Profile = () => {
   const { wallDataCtx } = useContext(WallDataCtx);
-  const [profilePicID, setProfilePicID] = useState('ylsmfc32qo8wylcrc8hd');
-
+  const [profilePicID, setProfilePicID] = useState('wpxlekksyivgcq5tnhq7');
+  const [formattedBirthDate, setFormattedBirthDate] = useState('');
+  const [formattedDeathDate, setFormattedDeathDate] = useState('');
   const onDrop = useCallback(async acceptedFile => {
     const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
 
@@ -32,35 +36,70 @@ const Profile = () => {
     }, 100);
   }, []);
 
-  console.log(profilePicID);
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accepts: 'image/*',
     multiple: false,
   });
 
+  const { deceasedFirstName, deceasedLastName, birthDate, deathDate } =
+    wallDataCtx;
+
+  const padTo2Digits = num => {
+    return num.toString().padStart(2, '0');
+  };
+
+  const formatDate = date => {
+    return [
+      padTo2Digits(date.getDate()),
+      padTo2Digits(date.getMonth() + 1),
+      date.getFullYear(),
+    ].join('/');
+  };
+
+  useEffect(() => {
+    setFormattedBirthDate(formatDate(birthDate));
+    setFormattedDeathDate(formatDate(deathDate));
+  });
+
   return (
     <div className='profileContainer'>
-      <div className='profileHeader'>profile header</div>
-
-      <div
-        className={`dropzone ${isDragActive ? 'active' : null}`}
-        {...getRootProps()}
-      >
-        <input {...getInputProps()} />
-        profile dropzone
+      <div className='profileHeader'>
+        <Link to='/'>
+          <img src={logo} alt='' />
+        </Link>
       </div>
-      {profilePicID ? (
-        <Image
-          cloudName={cloudName}
-          publicId={profilePicID}
-          width='300'
-          crop='scale'
-        />
-      ) : (
-        ''
-      )}
+
+      <div className='deceasedContainer'>
+        <div className='imgBackground'>
+          <Image
+            cloudName={cloudName}
+            publicId={profilePicID}
+            width='300'
+            crop='scale'
+            className='deceasedImg'
+            {...getRootProps()}
+          />
+          <input type='file' {...getInputProps()} />
+          <div className='deceasedInfo'>
+            <h1>{`${deceasedFirstName} ${deceasedLastName}`}</h1>
+            <p>{`${formattedBirthDate} - ${formattedDeathDate}`}</p>
+            <img src={dua} alt='' />
+            <MemoryModal />
+            <div>
+              {wallDataCtx['memoryName'] ? (
+                wallDataCtx['memoryName'].map((name, i) => (
+                  <div className='bubbleContainer' key={i}>
+                    <h1>{name}</h1>
+                  </div>
+                ))
+              ) : (
+                <h2>YOOO</h2>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
