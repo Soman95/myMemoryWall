@@ -18,7 +18,10 @@ const CreateWall = () => {
     <>
       <Box sx={{ flexGrow: 1 }}>
         <animated.div style={{ ...upStyles }}>
-          <AppBar position='static' sx={{ backgroundColor: '#169f95' }}>
+          <AppBar
+            position='static'
+            sx={{ backgroundColor: '#169f95', height: '130px' }}
+          >
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Link to='/'>
                 <div className='appLogo'>

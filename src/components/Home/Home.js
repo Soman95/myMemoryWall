@@ -33,7 +33,7 @@ const Home = () => {
           <animated.div className='rightSide' style={{ ...rightStyles }}>
             <div className='companyName'>
               <h1>
-                MuslimMemory<span>wall</span>
+                Memories<span>wall</span>
               </h1>
               <p> although they're gone, memories live on.</p>
             </div>
@@ -52,10 +52,10 @@ const Home = () => {
         </animated.div>
         <animated.div className='aboutUs' style={{ ...upStyles }}>
           <h2>
-            MuslimMemorywall is a platform created by muslims - for the muslims.
-            Our aim is to comemorate and honor those who have passed away. A
-            place where memories can be shared and moments can be relived. So
-            the loved ones who have left us are never forgotten.
+            Memorieswall is a platform created by muslims - for the muslims. Our
+            aim is to comemorate and honor those who have passed away. A place
+            where memories can be shared and moments can be relived. So the
+            loved ones who have left us are never forgotten.
           </h2>
         </animated.div>
       </div>
