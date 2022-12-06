@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/memoryLogo.png';
 import dua from '../../assets/inna.png';
 import MemoryModal from '../MemoryModal/MemoryModal';
+import MemoryBubble from '../MemoryBubble/MemoryBubble';
 
 import './Profile.css';
 // NEED TO PUT THIS IN ENVIRONMENTAL VARIABLE:
@@ -85,17 +86,17 @@ const Profile = () => {
             <h1>{`${deceasedFirstName} ${deceasedLastName}`}</h1>
             <p>{`${formattedBirthDate} - ${formattedDeathDate}`}</p>
             <img src={dua} alt='' />
-            <MemoryModal />
-            <div>
-              {wallDataCtx['memoryName'] ? (
-                wallDataCtx['memoryName'].map((name, i) => (
-                  <div className='bubbleContainer' key={i}>
-                    <h1>{name}</h1>
-                  </div>
-                ))
-              ) : (
-                <h2>YOOO</h2>
-              )}
+            <div className='memoryBubbleContainer'>
+              {wallDataCtx['memoryName'].map((name, i) => (
+                <div key={i}>
+                  <MemoryBubble
+                    name={name}
+                    relation={wallDataCtx['deceasedRelation'][i]}
+                    msg={wallDataCtx['deceasedMsg'][i]}
+                  />
+                </div>
+              ))}
+              <MemoryModal />
             </div>
           </div>
         </div>

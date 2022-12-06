@@ -1,7 +1,7 @@
 .profileHeader {
   height: 30vh;
   width: 100vw;
-  background-color: #169f95;
+  background-color: #71ba88;
   color: white;
 }
 
@@ -32,7 +32,7 @@
   position: relative;
   top: -250px;
   left: 40%;
-  color: #169f95;
+  color: #71ba88;
 }
 
 .deceasedImg {
@@ -53,7 +53,12 @@
   bottom: 100px;
 }
 
-/* .bubbleContainer h1 {
-  font-size: 1000px;
-  color: navy;
-} */
+.memoryBubbleContainer {
+  overflow-x: scroll;
+  /* background-color: black; */
+  width: 600px;
+  height: 700px;
+  position: relative;
+  right: 130px;
+  bottom: 150px;
+}

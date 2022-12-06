@@ -46,7 +46,12 @@ const MemoryModal = () => {
   return (
     <div>
       <Button
-        sx={{ background: '#169f95', width: '200px', color: 'white' }}
+        sx={{
+          background: '#71BA88',
+          width: '200px',
+          color: 'white',
+          '&:hover': { backgroundColor: '#2c974b' },
+        }}
         onClick={handleOpen}
       >
         Add Memory
@@ -98,7 +103,7 @@ const MemoryModal = () => {
             type='submit'
             fullWidth
             variant='contained'
-            sx={{ mt: 3, mb: 2, background: '#169f95' }}
+            sx={{ mt: 3, mb: 2, background: '#71BA88' }}
           >
             Create Memory
           </Button>

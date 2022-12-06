@@ -20,7 +20,7 @@ const CreateWall = () => {
         <animated.div style={{ ...upStyles }}>
           <AppBar
             position='static'
-            sx={{ backgroundColor: '#169f95', height: '130px' }}
+            sx={{ backgroundColor: '#71BA88', height: '130px' }}
           >
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Link to='/'>

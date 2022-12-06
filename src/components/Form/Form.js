@@ -129,12 +129,25 @@ const Form = () => {
               type='submit'
               fullWidth
               variant='contained'
-              sx={{ mt: 3, mb: 2 }}
+              sx={{
+                mt: 3,
+                mb: 2,
+                background: '#71BA88',
+                '&:hover': { backgroundColor: '#2c974b' },
+              }}
             >
               Add to Database
             </Button>
-            <Link to='/profile'>
-              <Button fullWidth variant='contained' sx={{ mb: 2 }}>
+            <Link to='/profile' style={{ textDecoration: 'none' }}>
+              <Button
+                fullWidth
+                variant='contained'
+                sx={{
+                  mb: 2,
+                  background: '#71BA88',
+                  '&:hover': { backgroundColor: '#2c974b' },
+                }}
+              >
                 <p className='navBtn'>Create Wall</p>
               </Button>
             </Link>
