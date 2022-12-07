@@ -1,0 +1,26 @@
+Frontend:
+- send a confirmation email when someone has made a page
+- Create the profile page for the deceased // half done need to find solution
+    * need to fix the 'Add to database btn and find working solution'
+- has a specific route for each profile when created. 
+    * maybe for this we could add a key to walldatactx and use that in the route?
+- when making a page link it to create Launchgood or Gofundme automatically
+
+Backend:
+- Create a database for all deceased profiles.
+- database must be able to CRUD
+- create commands to search through the database
+- Save the cloudinary 'public_id' into the database to be able to fetch it and display per profile.
+    * https://www.youtube.com/watch?v=V8w7K1HdrFo&t=2s
+    * the public_id can be used as the specific key for the profile - what if they change the photo?
+
+ISSUES:
+Create component:
+ - need to disable create a wall if there the form isn't filled out or if add to database hasn't been clicked
+
+
+Profile component:
+
+ - Anyone can change the photo need to have some sort of authentication (confirm by email) to change it
+ - Need to have a delete function for the specific comment made by the user (confirm by email)
+ - Need to make it so its one like per comment per user
