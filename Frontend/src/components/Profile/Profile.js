@@ -17,10 +17,11 @@ const uploadPreset = 'musmemwall';
 // ----------------------
 
 const Profile = () => {
-  const { wallDataCtx } = useContext(WallDataCtx);
+  const { wallDataCtx, setWallDataCtx } = useContext(WallDataCtx);
   const [profilePicID, setProfilePicID] = useState('wpxlekksyivgcq5tnhq7');
   const [formattedBirthDate, setFormattedBirthDate] = useState('');
   const [formattedDeathDate, setFormattedDeathDate] = useState('');
+
   const onDrop = useCallback(async acceptedFile => {
     const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
 
@@ -34,6 +35,7 @@ const Profile = () => {
 
     setTimeout(() => {
       setProfilePicID(data['public_id']);
+      setWallDataCtx({ ...wallDataCtx, imgURL: data.url });
     }, 100);
   }, []);
 
@@ -59,11 +61,11 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    setFormattedBirthDate(formatDate(birthDate));
-    setFormattedDeathDate(formatDate(deathDate));
-  });
-
-  console.log(wallDataCtx['deceasedMsg']);
+    if (wallDataCtx.firstName) {
+      setFormattedBirthDate(formatDate(birthDate));
+      setFormattedDeathDate(formatDate(deathDate));
+    }
+  }, [wallDataCtx]);
 
   return (
     <div className='profileContainer'>

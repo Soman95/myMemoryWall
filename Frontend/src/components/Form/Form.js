@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { WallDataCtx } from '../../Context/WallDataContext';
 import { Link } from 'react-router-dom';
 
@@ -18,8 +18,38 @@ import './Form.css';
 const Form = () => {
   const [birthValue, setBirthValue] = useState(dayjs('2001-10-18T21:11:54'));
   const [deathValue, setDeathValue] = useState(dayjs('2020-08-28T21:11:54'));
+  const [userProfileID, setUserProfileID] = useState('');
+  const { setWallDataCtx, wallDataCtx } = useContext(WallDataCtx);
 
-  const { setWallDataCtx } = useContext(WallDataCtx);
+  useEffect(() => {
+    const postOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(wallDataCtx),
+    };
+
+    if (wallDataCtx.firstName) {
+      const createProfile = async () => {
+        const post = await fetch(
+          'http://localhost:8000/api/profiles',
+          postOptions
+        );
+
+        const json = await post.json();
+
+        return json;
+      };
+
+      const profile = createProfile();
+
+      profile
+        .then(data => {
+          setUserProfileID(data['_id']);
+          console.log(data, 'POST REQUEST');
+        })
+        .catch(err => console.log(err));
+    }
+  }, [wallDataCtx]);
 
   const handleBirthChange = newValue => {
     setBirthValue(newValue);
@@ -39,12 +69,12 @@ const Form = () => {
       birthDate: birthValue['$d'],
       deathDate: deathValue['$d'],
       email: data.get('email'),
-      key: 'adam',
       memoryName: [''],
       deceasedRelation: [''],
       deceasedMsg: [''],
     });
   };
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Container component='main' maxWidth='xs'>
@@ -138,7 +168,11 @@ const Form = () => {
             >
               Add to Database
             </Button>
-            <Link to='/profile' style={{ textDecoration: 'none' }}>
+            <Link
+              to={`/profile/${userProfileID}`}
+              style={{ textDecoration: 'none' }}
+              onClick={e => (wallDataCtx.firstName ? e : e.preventDefault())}
+            >
               <Button
                 fullWidth
                 variant='contained'
@@ -147,6 +181,7 @@ const Form = () => {
                   background: '#71BA88',
                   '&:hover': { backgroundColor: '#2c974b' },
                 }}
+                disabled={wallDataCtx.firstName ? false : true}
               >
                 <p className='navBtn'>Create Wall</p>
               </Button>
