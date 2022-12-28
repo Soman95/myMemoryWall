@@ -25,7 +25,7 @@ const Home = () => {
 
   return (
     <>
-      <div className='homeContainer'>
+      <div className='homeContainer searchContainer'>
         <div className='title'>
           <animated.div className='logo' style={{ ...leftStyles }}>
             <img src={logo} alt='' />
@@ -39,7 +39,9 @@ const Home = () => {
               <p> although they're gone, memories live on.</p>
             </div>
             <div className='buttons'>
-              <button>Search for a loved one</button>
+              <Link to='/search'>
+                <button>Search for a loved one</button>
+              </Link>
               <Link to='/create'>
                 <button>Create a wall</button>
               </Link>
