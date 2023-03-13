@@ -1,7 +1,7 @@
 {
   "name": "mymemorywall",
   "version": "1.0.0",
-  "description": "a place to remember the forgotten",
+  "description": "a place to honour the deceased",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chefnoname/mymemorywall.git"
+    "url": "git+https://github.com/Soman95/myMemoryWall"
   },
-  "author": "AbdiWali & Petrit",
+  "author": "Sulayman & Petrit",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chefnoname/mymemorywall/issues"
+    "url": "https://github.com/Soman95/myMemoryWall/issues"
   },
-  "homepage": "https://github.com/chefnoname/mymemorywall#readme",
+  "homepage": "https://github.com/Soman95/myMemoryWall#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
