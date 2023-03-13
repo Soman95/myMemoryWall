@@ -20,11 +20,23 @@
   },
   "homepage": "https://github.com/Soman95/myMemoryWall#readme",
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.12",
+    "@mui/x-date-pickers": "^6.0.1",
+    "cloudinary-react": "^1.8.1",
     "cors": "^2.8.5",
+    "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
-    "mongoose": "^6.8.0"
+    "mongoose": "^6.8.0",
+    "react-dropzone": "^14.2.3",
+    "react-router-dom": "^6.9.0",
+    "react-scripts": "^5.0.1",
+    "react-spring": "^9.7.1",
+    "web-vitals": "^3.3.0"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",
